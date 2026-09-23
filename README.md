@@ -33,7 +33,6 @@ export CXX=/usr/bin/g++
 # set nlopt flags
 # export CGO_CFLAGS="-I${CONDA_PREFIX}/include"
 # export CGO_LDFLAGS="-L${CONDA_PREFIX}/lib -lnlopt"
-export CC=/usr/bin/gcc
 export CGO_CFLAGS="-I${CONDA_PREFIX}/include -U_FORTIFY_SOURCE"
 export CGO_LDFLAGS="-L${CONDA_PREFIX}/lib -lnlopt -Wl,-rpath,${CONDA_PREFIX}/lib"
 
