@@ -2,15 +2,15 @@
 
 ## Installation
 
-Janus is written in go. You will need to make sure that go is installed (see you system details for how to do that). 
+Janus is written in go. You will need to make sure that go is installed (see you system details for how to do that).
 
 Getting and building Janus is relatively straightforward. You can clone the repository with:
 
  ```bash
-git clone https://git.sr.ht/~hms/janus
+git clone git@github.com:xgrau/janus.git # or https://git.sr.ht/~hms/janus
 ```
 
-This will make a `janus` directory. You can then go into the directory and: 
+This will make a `janus` directory. You can then go into the directory and:
 
 ```bash
 mamba create -n janus conda-forge::go==1.16.5  conda-forge::nlopt==2.7.0
@@ -22,7 +22,7 @@ cd ../../go/pkg/mod/github.com/go-nlopt/nlopt
 chmod -R 766 nlopt@v0.0.0-20230219125344-443d3362dcb5/
 cd nlopt@v0.0.0-20230219125344-443d3362dcb5/
 bash install_nlopt.sh
-# You will need to enter your password (and if you have run this before, you may need to delete the nlopt*/build directory). 
+# You will need to enter your password (and if you have run this before, you may need to delete the nlopt*/build directory).
 # But after you have completed this, rerun the build of Janus.
 
 # navigate back to janus home folder
@@ -46,7 +46,7 @@ go build -x -v janus.go
 This guide assumes that you have already installed Janus using the information in the [README](../README.md). If you have done so then you should be able to get a help message that looks something like this if you run Janus without options:
 
 ```bash
-↪ ./janus 
+↪ ./janus
   -aa string
     	amino acids (WAG, JTT, LG)
   -aicc
@@ -167,9 +167,9 @@ exists: 1 1
 ...
 ```
 
-This is showing each shift in newick format and then the result from the "exists" test which is just looking at the IC of the shift being at that node vs not (`1` means it is strongly supported). 
+This is showing each shift in newick format and then the result from the "exists" test which is just looking at the IC of the shift being at that node vs not (`1` means it is strongly supported).
 
-And if you open the `seqs.treefile.rr.gophy.results.tre` in `Figtree` again you will see some additional options. 
+And if you open the `seqs.treefile.rr.gophy.results.tre` in `Figtree` again you will see some additional options.
 
 ### Flags
 
@@ -267,11 +267,11 @@ _Very experimental._ Include checking for the uncertainty of a shift location. 1
     	number of threads (default 4)
 ```
 
-Janus is parallel, so how many threads? Probably not more than you have on your machine. 
+Janus is parallel, so how many threads? Probably not more than you have on your machine.
 
 ### A note about optimization
 
-Optimization of many parameters in a complex phylogenetic space is difficult. Janus is no different. We have attempted to develop the program so that it doesn't get stuck in local optima and so that it doesn't suffer from issues where it doesn't find the ML. The problem is exacerbated by likelihood space that is relatively rough and uneven. Think about using the hringhorni version if you are having particular problems.  
+Optimization of many parameters in a complex phylogenetic space is difficult. Janus is no different. We have attempted to develop the program so that it doesn't get stuck in local optima and so that it doesn't suffer from issues where it doesn't find the ML. The problem is exacerbated by likelihood space that is relatively rough and uneven. Think about using the hringhorni version if you are having particular problems.
 
 ### A note about hringhorni edition
 
