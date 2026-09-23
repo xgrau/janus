@@ -31,12 +31,17 @@ cd /home/xavi/Programes/janus
 export CC=/usr/bin/gcc
 export CXX=/usr/bin/g++
 # set nlopt flags
-export CGO_CFLAGS="-I${CONDA_PREFIX}/include"
-export CGO_LDFLAGS="-L${CONDA_PREFIX}/lib -lnlopt"
+# export CGO_CFLAGS="-I${CONDA_PREFIX}/include"
+# export CGO_LDFLAGS="-L${CONDA_PREFIX}/lib -lnlopt"
+export CC=/usr/bin/gcc
+export CGO_CFLAGS="-I${CONDA_PREFIX}/include -U_FORTIFY_SOURCE"
+export CGO_LDFLAGS="-L${CONDA_PREFIX}/lib -lnlopt -Wl,-rpath,${CONDA_PREFIX}/lib"
 
 # build janus
-go build -x -v janus.go
+go build janus.go
 
+# test
+./janus
 ```
 
 ## Documentation
@@ -81,11 +86,29 @@ Sometimes you will get an error after compiling and running an example, and this
 
 ### Basic usage
 
-A typical usage of Janus would be something like this (using files from `example/1`, see below) `hmsj -s seqs -t seqs.treefile.rr`. This will default to running 4 threads (you can change with `-w #`) and not running any uncertainty analyses. A more complicated run might look like `hmsj -s seqs -t seqs.treefile.rr -ue -ul -w 2`. This is running, with 2 threads, the whole analysis along with two uncertainty analyses (location and existence).
+A typical usage of Janus would be something like this (using files from `example/1`, see below):
+
+```bash
+janus -s seqs -t seqs.treefile.rr
+```
+
+This will default to running 4 threads (you can change with `-w #`) and not running any uncertainty analyses. 
+
+A more complicated run might look like:
+
+```bash
+janus -s seqs -t seqs.treefile.rr -ue -ul -w 2
+```
+
+This is running, with 2 threads, the whole analysis along with two uncertainty analyses (location and existence).
 
 ### An example
 
-For the first example, we will look at a single shift in base composition on a nucleotide dataset containing 100 tips. This is found in the `examples/1` directory. You can run the command `hmsj -s seqs -t seqs.treefile.rr`
+For the first example, we will look at a single shift in base composition on a nucleotide dataset containing 100 tips. This is found in the `examples/1` directory. You can run the command 
+
+```bash
+janus -s seqs -t seqs.treefile.rr
+```
 
 This run takes, on my machine:
 
