@@ -169,7 +169,7 @@ Final models
 
 There is an additional outfile `seqs.treefile.rr.gophy.results.tre` that you can display in `Figtree`. If you open the file and color the branches by `model` you will see something like the figure below. You will see that the nested model is model *1* and the base is model *0*.
 
-<img src="example/1/example.png" alt="example" width="300"/>
+<img src="example/s1/example.png" alt="example" width="300"/>
 
 This is suggesting that there is a model shift at the clade that includes `taxon_1 and taxon_17`. And from our output we can see that this model has the following composition A:0.125 C:0.248 G:0.209 T:0.418 and the base model has the following composition A: 0.257 C: 0.248 G: 0.253 T: 0.241. The simulation that generated these data had the composition of 0.25 for all nucleotides for the base model and A:0.0814 C:0.234 G:0.184 T:0.501 for the nested model at the clade `taxon_1 and taxon_17`.
 
