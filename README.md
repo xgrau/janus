@@ -169,13 +169,19 @@ Final models
 
 There is an additional outfile `seqs.treefile.rr.gophy.results.tre` that you can display in `Figtree`. If you open the file and color the branches by `model` you will see something like the figure below. You will see that the nested model is model *1* and the base is model *0*.
 
-<img src="/~hms/janus/blob/master/examples/1/example.png" alt="example" width="300"/>
+<img src="example/1/example.png" alt="example" width="300"/>
 
 This is suggesting that there is a model shift at the clade that includes `taxon_1 and taxon_17`. And from our output we can see that this model has the following composition A:0.125 C:0.248 G:0.209 T:0.418 and the base model has the following composition A: 0.257 C: 0.248 G: 0.253 T: 0.241. The simulation that generated these data had the composition of 0.25 for all nucleotides for the base model and A:0.0814 C:0.234 G:0.184 T:0.501 for the nested model at the clade `taxon_1 and taxon_17`.
 
 You will also notice that there are other options for display including `modelpar` which will give you the parameters for the model (these are also displayed at the end of the run).
 
-We can run another analysis that includes uncertainty in the existence of shifts. To do this, we can run the analysis `hmsj -s seqs -t tree -ue`. We prefer these runs to those that look at uncertainty in the location of shifts because those are hard to interpret on larger and more complex trees.
+We can run another analysis that includes uncertainty in the existence of shifts. To do this, we can run the analysis `
+
+```bash
+janus -s seqs -t tree -ue
+```
+
+We prefer these runs to those that look at uncertainty in the location of shifts because those are hard to interpret on larger and more complex trees.
 
 The output will look relatively similar with the exception of the output tree, which will have information on the location of the shift and the existience of the shift. At the end of the run, you will see something like this
 
@@ -210,7 +216,7 @@ If you have an amino acid dataset, you use this option and have these models tha
 If you want to use AICc instead of BIC for all IC calcs.
 
 ```bash
-  -b	estimate branch lengths
+  -b estimate branch lengths
 ```
 
 _Very experimental._ You can try to reestimate branch lengths using the heterogeneous model.
